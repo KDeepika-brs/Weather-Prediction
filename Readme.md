@@ -9,4 +9,4 @@
 ##### Purpose :
     API is used to access current weather data for any location
 
-#### Dear Students, Check out the live app [here]().
+#### Dear Students, Check out the live app [here](https://kdeepika-brs.github.io/Weather-Prediction/).

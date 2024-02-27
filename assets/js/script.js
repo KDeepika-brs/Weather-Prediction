@@ -1,10 +1,3 @@
-/**
-Author:    Build Rise Shine with Nyros (BRS)
-Created:   11.05.2022
-Library / Component: Script file
-Description: Logic behind the app(fetching the data from the API)
-(c) Copyright by BRS with Nyros.
-**/
 window.onload = function () {
     document.querySelector('.input-search').value = '';
 }
@@ -15,11 +8,18 @@ const api_details = {
 }
 
 const input = document.querySelector('.input-search');
-input.addEventListener('keypress', showData)
+input.addEventListener('keypress', function (e) {
+    if (e.keyCode === 13) {
+        document.getElementById("enterButton").click();
+    }
+});
+document.getElementById("enterButton").addEventListener("click", function () {
 
+    showResults();
 
-async function showResults(value) {
-    const data = await fetch(`${api_details.url}weather?q=${value}&units=metric&APPID=${api_details.api_key}`)
+});
+async function showResults() {
+    const data = await fetch(`${api_details.url}weather?q=${input.value}&units=metric&APPID=${api_details.api_key}`)
     const fdata = await data.json();
     if (fdata.message === "city not found") {
         document.querySelector('.location-city').innerText = null;
